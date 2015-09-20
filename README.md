@@ -13,6 +13,7 @@ The following **required** functionality is completed:
 * [x] For each photo displayed, user can see the following details:
   * [x] Graphic, Caption, Username
   * [x] like count, user profile image
+  * [ ] Relative timestamp on profile picture
   * [x] Relative timestamp on comments in dialogfragment
 
 The following **optional** features are implemented:
