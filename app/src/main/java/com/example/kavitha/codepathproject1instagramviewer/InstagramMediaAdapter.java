@@ -34,6 +34,7 @@ public class InstagramMediaAdapter extends ArrayAdapter {
         TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
         TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
         ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.ivPhoto);
+        TextView tvLikesCount = (TextView) convertView.findViewById(R.id.tvLikesCount);
         TextView tvMoreComment = (TextView) convertView.findViewById(R.id.tvMoreComment);
         TextView tvComment1 = (TextView) convertView.findViewById(R.id.tvComment1);
         TextView tvComment2 = (TextView) convertView.findViewById(R.id.tvComment2);
@@ -45,7 +46,7 @@ public class InstagramMediaAdapter extends ArrayAdapter {
         ivUserPhoto.setImageResource(0);
 
         Picasso.with(getContext()).load(photo.userPhotoUrl).into(ivUserPhoto);
-
+        tvLikesCount.setText(Html.fromHtml("<b>" + photo.likesCount + " likes</b>"));
         //comments circus
         int commentCount = photo.comments.size();
         if (commentCount > 0) {
