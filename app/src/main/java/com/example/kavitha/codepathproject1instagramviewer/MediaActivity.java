@@ -76,6 +76,7 @@ public class MediaActivity extends AppCompatActivity {
                         mediaUnit.type = mediaUnitJSON.getString("type");
                         mediaUnit.mediaUrl = mediaUnitJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
                         mediaUnit.likesCount = mediaUnitJSON.getJSONObject("likes").getInt("count");
+                        mediaUnit.createdTime = mediaUnitJSON.getInt("created_time");
                         mediaUnit.mediaHeight = mediaUnitJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height");
                         if (!mediaUnitJSON.isNull("comments")) {
                             JSONArray comments = mediaUnitJSON.getJSONObject("comments").getJSONArray("data");

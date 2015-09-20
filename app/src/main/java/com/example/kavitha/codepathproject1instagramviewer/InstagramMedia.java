@@ -17,13 +17,12 @@ public class InstagramMedia implements Parcelable {
     public String type;
     public int mediaHeight;
     public int likesCount;
+    public int createdTime;
     public ArrayList<MediaActivity.CommentObj> comments;
 
     public InstagramMedia() {
         this.comments = new ArrayList<MediaActivity.CommentObj>();
     }
-
-
 
 
     @Override
@@ -36,6 +35,7 @@ public class InstagramMedia implements Parcelable {
                 ", type='" + type + '\'' +
                 ", mediaHeight=" + mediaHeight +
                 ", likesCount=" + likesCount +
+                ", createdTime=" + createdTime +
                 ", comments=" + comments +
                 '}';
     }
@@ -54,6 +54,7 @@ public class InstagramMedia implements Parcelable {
         dest.writeString(this.type);
         dest.writeInt(this.mediaHeight);
         dest.writeInt(this.likesCount);
+        dest.writeInt(this.createdTime);
         dest.writeList(this.comments);
     }
 
@@ -65,6 +66,7 @@ public class InstagramMedia implements Parcelable {
         this.type = in.readString();
         this.mediaHeight = in.readInt();
         this.likesCount = in.readInt();
+        this.createdTime = in.readInt();
         this.comments = new ArrayList<MediaActivity.CommentObj>();
         in.readList(this.comments, List.class.getClassLoader());
     }

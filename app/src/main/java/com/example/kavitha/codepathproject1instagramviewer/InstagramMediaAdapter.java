@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class InstagramMediaAdapter extends ArrayAdapter {
         }
         RoundedImageView ivUserPhoto = (RoundedImageView) convertView.findViewById(R.id.ivUserPhoto);
         TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
+        TextView tvCreatedTime = (TextView) convertView.findViewById(R.id.tvCreatedTime);
         TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
         ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.ivPhoto);
         TextView tvLikesCount = (TextView) convertView.findViewById(R.id.tvLikesCount);
@@ -40,7 +42,12 @@ public class InstagramMediaAdapter extends ArrayAdapter {
         TextView tvComment1 = (TextView) convertView.findViewById(R.id.tvComment1);
         TextView tvComment2 = (TextView) convertView.findViewById(R.id.tvComment2);
         tvUsername.setText(Html.fromHtml("<b><font color=\"#3f729b\">" + photo.userName + "</font></b> "));
-        tvCaption.setText(Html.fromHtml("<b><font color=\"#3f729b\">" + photo.userName + "</font></b> " +photo.caption));
+        long photoCreatedTime = photo.createdTime * 1000l;
+        String createdTimeStr = (String) DateUtils.getRelativeTimeSpanString(photoCreatedTime, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS);
+        createdTimeStr = cleanupTheTimeStr(createdTimeStr);
+//        createdTimeStr = createdTimeStr
+        tvCreatedTime.setText(createdTimeStr);
+        tvCaption.setText(Html.fromHtml("<b><font color=\"#3f729b\">" + photo.userName + "</font></b> " + photo.caption));
 
 
         ivPhoto.setImageResource(0);
@@ -84,5 +91,11 @@ public class InstagramMediaAdapter extends ArrayAdapter {
             }
         });
         return convertView;
+    }
+
+    public String cleanupTheTimeStr(String input) {
+        String[] value = input.split(" ");
+        String durationVal = value[1];
+        return value[0] + value[1].charAt(0);
     }
 }
