@@ -12,9 +12,7 @@ The following **required** functionality is completed:
 * [x] User can **scroll through current popular photos** from Instagram
 * [x] For each photo displayed, user can see the following details:
   * [x] Graphic, Caption, Username
-  * [x] like count, user profile image
-  * [ ] Relative timestamp on profile picture
-  * [x] Relative timestamp on comments in dialogfragment
+  * [x] Relative timestamp, like count, user profile image
 
 The following **optional** features are implemented:
 
@@ -46,6 +44,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
+- Styling Taskbar was not straight forward
 
 ## Open-source libraries used
 
