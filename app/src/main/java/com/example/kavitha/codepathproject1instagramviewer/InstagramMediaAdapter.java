@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -40,13 +41,16 @@ public class InstagramMediaAdapter extends ArrayAdapter {
         TextView tvComment2 = (TextView) convertView.findViewById(R.id.tvComment2);
         tvUsername.setText(Html.fromHtml("<b><font color=\"#3f729b\">" + photo.userName + "</font></b> "));
         tvCaption.setText(Html.fromHtml("<b><font color=\"#3f729b\">" + photo.userName + "</font></b> " +photo.caption));
+
+
         ivPhoto.setImageResource(0);
-        Picasso.with(getContext()).load(photo.mediaUrl).into(ivPhoto);
+        Picasso.with(getContext()).load(photo.mediaUrl).placeholder(R.drawable.placeholder).into(ivPhoto);
 
         ivUserPhoto.setImageResource(0);
 
         Picasso.with(getContext()).load(photo.userPhotoUrl).into(ivUserPhoto);
-        tvLikesCount.setText(Html.fromHtml("<b>" + photo.likesCount + " likes</b>"));
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        tvLikesCount.setText(Html.fromHtml("<b>" + formatter.format(photo.likesCount) + " likes</b>"));
         //comments circus
         int commentCount = photo.comments.size();
         if (commentCount > 0) {

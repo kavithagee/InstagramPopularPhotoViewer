@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,8 +38,8 @@ public class InstagramCommentsAdapter extends ArrayAdapter {
         Picasso.with(getContext()).load(commentObj.userPhotoUrl).into(ivCommentUserPhoto);
 
         tvCommentUsername.setText(Html.fromHtml("<b><font color=\"#3f729b\">" + commentObj.fromUsername + "</font></b> " + commentObj.text));
-        Date now = new Date();
-        tvCommentTimestamp.setText(""+ DateUtils.getRelativeTimeSpanString(commentObj.createdTime * 1000, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS));
+        long timeStamp = commentObj.createdTime * 1000l;
+        tvCommentTimestamp.setText(""+ DateUtils.getRelativeTimeSpanString(timeStamp, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS));
 
         return convertView;
     }
